@@ -11,7 +11,8 @@ class ScraperService:
         self.__scraper_threads = set()
 
     def start(self, nbr_threads):
-        ThreadScraper.thread_stopped = False
+        self.stop()
+        self.__data_storage.reset()
         for _ in range(nbr_threads):
             article_scraper = self.__article_scraper_factory.create()
             thread_scraper = ThreadScraper(self.__data_storage, article_scraper)

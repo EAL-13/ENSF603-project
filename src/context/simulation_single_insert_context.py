@@ -2,7 +2,7 @@ from src.application_service.scraper_service import ScraperService
 from src.domain.scraper.article_scraper_factory import ArticleScraperFactory
 from src.domain.scraper.simulation_article_scraper_factory import SimulationArticleScraperFactory
 from src.domain.data_persistence.data_storage import DataStorage
-from src.infrastructure.data_persistence.mongodb_single_insertion_data_storage import MongoDBSingleInsertionDataStorage
+from src.infrastructure.data_persistence.mongodb.mongodb_single_insertion_data_storage import MongoDBSingleInsertionDataStorage
 
 __data_storage: DataStorage = MongoDBSingleInsertionDataStorage()
 __article_scraper_factory: ArticleScraperFactory = SimulationArticleScraperFactory()

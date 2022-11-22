@@ -7,3 +7,7 @@ class DataStorage(ABC):
     @abstractmethod
     def persist_article(self, article: Article):
         pass
+
+    @abstractmethod
+    def reset(self):
+        pass

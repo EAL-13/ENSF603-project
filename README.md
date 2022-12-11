@@ -1,3 +1,2 @@
-# ENSF306-project
-
-ENSF306 Project UofC
+# ENSF603-project
+ENSF603 Project UofC

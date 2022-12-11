@@ -1,6 +1,5 @@
 from src.domain.article import Article
 from src.infrastructure.data_persistence.mongodb.mongodb_data_storage import MongoDBDataStorage
-import pymongo
 
 
 class MongoDBSingleInsertionDataStorage(MongoDBDataStorage):

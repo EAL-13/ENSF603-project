@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+
 from src.domain.article import Article
 
 
@@ -9,5 +10,5 @@ class DataStorage(ABC):
         pass
 
     @abstractmethod
-    def reset(self):
+    def reset(self, unique_index: bool):
         pass

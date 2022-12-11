@@ -1,7 +1,7 @@
 from src.application_service.scraper_service import ScraperService
+from src.domain.data_persistence.data_storage import DataStorage
 from src.domain.scraper.article_scraper_factory import ArticleScraperFactory
 from src.domain.scraper.simulation_article_scraper_factory import SimulationArticleScraperFactory
-from src.domain.data_persistence.data_storage import DataStorage
 from src.infrastructure.data_persistence.mongodb.mongodb_batch_insertion_data_storage import \
     MongoDBBatchInsertionDataStorage
 

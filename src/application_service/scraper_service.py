@@ -10,9 +10,13 @@ class ScraperService:
         self.__article_scraper_factory: ArticleScraperFactory = article_scraper_factory
         self.__scraper_threads = set()
 
-    def start(self, nbr_threads):
+    def start(self, nbr_threads: int, unique_index: bool):
+        if nbr_threads > 100:
+            nbr_threads = 100
+
         self.stop()
-        self.__data_storage.reset()
+        self.__data_storage.reset(unique_index)
+
         for _ in range(nbr_threads):
             article_scraper = self.__article_scraper_factory.create()
             thread_scraper = ThreadScraper(self.__data_storage, article_scraper)

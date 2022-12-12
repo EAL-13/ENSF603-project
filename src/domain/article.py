@@ -11,3 +11,6 @@ class Article:
     def to_dict(self):
         return {"source": self.__source, "author": self.__author, "date": self.__date, "body": self.__body,
                 "hash": self.__hash}
+
+    def get_hash(self):
+        return self.__hash

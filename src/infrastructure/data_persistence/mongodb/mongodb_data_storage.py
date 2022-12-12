@@ -17,12 +17,15 @@ class MongoDBDataStorage(DataStorage, ABC):
     __db = __client["ensf603"]
     _collection = __db["articles"]
 
-    __unique_index_field = "hash"
+    __unique_index_field_name = "hash"
+    _uses_unique_index = False
 
     def reset(self, unique_index: bool):
+        self._uses_unique_index = unique_index
+
         query = {"date": {"$gte": "2000-01-01"}}
         self._collection.delete_many(query)
 
-        self._collection.drop_index()
+        self._collection.drop_indexes()
         if unique_index:
-            self._collection.create_index(self.__unique_index_field, unique=True)
+            self._collection.create_index(self.__unique_index_field_name, unique=True)

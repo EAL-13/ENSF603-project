@@ -14,7 +14,7 @@ class ScraperService:
         if nbr_threads > 100:
             nbr_threads = 100
 
-        self.stop()
+        self.stop_and_gather_nbr_insertion_attempts()
         self.__data_storage.reset(unique_index)
 
         for _ in range(nbr_threads):
@@ -23,8 +23,12 @@ class ScraperService:
             thread_scraper.start()
             self.__scraper_threads.add(thread_scraper)
 
-    def stop(self):
+    def stop_and_gather_nbr_insertion_attempts(self):
+        insertion_attempts = 0
+
         for thread in self.__scraper_threads:
-            thread.stop_thread()
+            insertion_attempts += thread.stop_thread_and_gather_nbr_insertion_attempts()
             thread.join()
         self.__scraper_threads.clear()
+
+        return insertion_attempts

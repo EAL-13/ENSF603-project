@@ -12,3 +12,7 @@ class DataStorage(ABC):
     @abstractmethod
     def reset(self, unique_index: bool):
         pass
+
+    @abstractmethod
+    def disable(self):
+        pass

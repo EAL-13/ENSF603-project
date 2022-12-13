@@ -39,5 +39,5 @@ def stop():
 
 
 def __stop_simulation():
-    time.sleep(60)
+    time.sleep(120)
     return stop()

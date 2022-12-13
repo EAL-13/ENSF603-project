@@ -24,6 +24,7 @@ class ScraperService:
             self.__scraper_threads.add(thread_scraper)
 
     def stop_and_gather_nbr_insertion_attempts(self):
+        self.__data_storage.disable()
         insertion_attempts = 0
 
         for thread in self.__scraper_threads:

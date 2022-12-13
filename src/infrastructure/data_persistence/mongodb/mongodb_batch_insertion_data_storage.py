@@ -10,6 +10,8 @@ class MongoDBBatchInsertionDataStorage(MongoDBDataStorage):
     __cache_len: int = 0
 
     def persist_article(self, article: Article):
+        self._validate_access()
+
         if self.__cache_len < self.__persistence_threshold:
             self.__cache_articles[article.get_hash()] = article.to_dict()
             self.__cache_hashes.add(article.get_hash())

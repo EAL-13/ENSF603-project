@@ -17,9 +17,12 @@ class ThreadScraper(Thread):
 
     def run(self):
         while self.__active_thread:
-            self.__data_storage.persist_article(self.__article_scraper.gatherArticle())
-            self.__nbr_insertions_attempted += 1
-            time.sleep(uniform(0.01, 0.1))
+            try:
+                self.__data_storage.persist_article(self.__article_scraper.gatherArticle())
+                self.__nbr_insertions_attempted += 1
+                time.sleep(uniform(0.01, 0.1))
+            except:
+                break
 
     def stop_thread_and_gather_nbr_insertion_attempts(self):
         self.__active_thread = False

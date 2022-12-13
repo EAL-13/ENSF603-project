@@ -20,6 +20,8 @@ class MongoDBDataStorage(DataStorage, ABC):
     __unique_index_field_name = "hash"
     _uses_unique_index = False
 
+    __disabled = False
+
     def reset(self, unique_index: bool):
         self._uses_unique_index = unique_index
 
@@ -29,3 +31,12 @@ class MongoDBDataStorage(DataStorage, ABC):
         self._collection.drop_indexes()
         if unique_index:
             self._collection.create_index(self.__unique_index_field_name, unique=True)
+
+        self.__disabled = False
+
+    def disable(self):
+        self.__disabled = True
+
+    def _validate_access(self):
+        if self.__disabled:
+            raise Exception("Access to the MongoDB adapter denied (Manually disabled)")
